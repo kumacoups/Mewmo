@@ -8,7 +8,7 @@
 :root{--bg:#fbeee8;--card:#fffdfa;--in:#fffbe8;--ink:#3d4470;--mut:#6a6f90;--line:#eadfb0;--ac:#f2a1b2;--on:#3d4470;--tx:#3d4470;--ok:#2a8a5e;--bad:#c4506a;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px)}
 *{box-sizing:border-box}[hidden]{display:none!important}
 body{margin:0;background:var(--bg);color:var(--ink);font:400 15px/1.5 'Noto Sans Thai Looped',system-ui,sans-serif}
-.w{max-width:720px;margin:0 auto;padding:12px 12px 150px;animation:fu .55s 1s both}
+.w{max-width:720px;margin:0 auto;padding:12px 12px 150px;animation:fu .55s 1s backwards}
 header{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:22px}
 .br{display:flex;align-items:center;gap:16px;min-width:0}
 h1{font-size:20px;margin:0;font-weight:700;color:var(--tx);line-height:1.2}
@@ -395,6 +395,22 @@ nav{gap:2px;padding:6px 5px}nav button{font-size:11px;padding:7px 1px}
 .hbc input.ed{font-weight:600}
 details.hbdet summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:6px;font-weight:600;font-size:16px}.hbdet summary::-webkit-details-marker{display:none}.hbdet[open] summary{margin-bottom:10px}
 .hbdet .hbm,.hbdet .hbwrap{box-shadow:none;background:var(--in)}.hbdet .hbwrap{margin-bottom:6px}.hbdet .hbt .hn{background:var(--in)}
+
+/* ===== screen-fit fix: status bar / bottom nav ===== */
+html{background:var(--bg);min-height:100%;-webkit-font-smoothing:antialiased}
+body{min-height:100vh;min-height:100dvh}
+:root{padding-top:0}
+.w{padding-top:calc(14px + env(safe-area-inset-top,0px));padding-bottom:calc(130px + env(safe-area-inset-bottom,0px))}
+/* solid cover under the status bar so scrolled content never shows through blurry */
+body::before{content:'';position:fixed;top:0;left:0;right:0;height:calc(env(safe-area-inset-top,0px) + 12px);background:linear-gradient(to bottom,var(--bg) calc(100% - 12px),transparent);z-index:9;pointer-events:none}
+/* cover under the floating nav / home indicator so content doesn't peek below it */
+body::after{content:'';position:fixed;left:0;right:0;bottom:0;height:calc(env(safe-area-inset-bottom,0px) + 56px);background:linear-gradient(to top,var(--bg) 40%,transparent);z-index:9;pointer-events:none}
+nav{bottom:max(10px,calc(env(safe-area-inset-bottom,0px) - 12px))}
+.fab{bottom:calc(max(10px,env(safe-area-inset-bottom,0px) - 12px) + 80px)}
+.toast{bottom:calc(max(10px,env(safe-area-inset-bottom,0px) - 12px) + 90px)}
+.sheet{height:100vh;height:100dvh}
+.sh{max-height:88vh;max-height:88dvh}
+h1,.w h2{text-shadow:none;-webkit-font-smoothing:antialiased}
 </style></head>
 <body><div class="w">
 <header><div class="br"><svg class="cat" width="48" height="48" viewBox="0 0 48 48" aria-hidden="true"><path d="M7 22L9 6l12 8zM41 22L39 6 27 14z" fill="#fff2d9"/><path d="M11 17l.6-5 4.4 3zM37 17l-.6-5-4.4 3z" fill="#df8f9c"/><ellipse cx="24" cy="29" rx="19" ry="15" fill="#fff2d9"/><ellipse class="ey" cx="16.5" cy="28" rx="2" ry="2.6" fill="#3d4470"/><ellipse class="ey" cx="31.5" cy="28" rx="2" ry="2.6" fill="#3d4470"/><circle cx="11.5" cy="33" r="2.6" fill="#df8f9c" opacity=".8"/><circle cx="36.5" cy="33" r="2.6" fill="#df8f9c" opacity=".8"/><path d="M22 31.5h4l-2 2.2z" fill="#df8f9c"/><path d="M21 36c1.5 1.4 4.5 1.4 6 0M3 28l6 1M3 33l6-1M45 28l-6 1M45 33l-6-1" fill="none" stroke="#3d4470" stroke-width="1.6" stroke-linecap="round"/></svg><div><small class="wm">Mewmo</small><h1 id="mt"></h1><div class="bub" id="bub"></div></div></div>

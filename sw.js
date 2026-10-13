@@ -1,4 +1,4 @@
-const V='mewmo-d89abd71';
+const V='mewmo-5ee27ded';
 const SHELL=['./','index.html','manifest.webmanifest','icons/icon-192.png','icons/icon-512.png','icons/maskable-512.png','icons/apple-touch-icon.png','icons/favicon-48.png'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(V).then(c=>c.addAll(SHELL)).then(()=>self.skipWaiting()))});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k.startsWith('mewmo-')&&!k.startsWith(V)).map(k=>caches.delete(k)))).then(()=>self.clients.claim()))});

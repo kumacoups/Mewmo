@@ -1,0 +1,73 @@
+{
+ "name": "Mewmo",
+ "short_name": "Mewmo",
+ "description": "แพลนเนอร์น่ารัก ปฏิทิน โน้ต Habit การเงิน Mood และสวนดอกไม้ในแอปเดียว",
+ "lang": "th",
+ "dir": "ltr",
+ "start_url": "./",
+ "scope": "./",
+ "id": "./",
+ "display": "standalone",
+ "orientation": "any",
+ "background_color": "#f3d9d0",
+ "theme_color": "#f3d9d0",
+ "categories": [
+  "productivity",
+  "lifestyle"
+ ],
+ "icons": [
+  {
+   "src": "icons/icon-192.png",
+   "sizes": "192x192",
+   "type": "image/png",
+   "purpose": "any"
+  },
+  {
+   "src": "icons/icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "any"
+  },
+  {
+   "src": "icons/maskable-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "maskable"
+  }
+ ],
+ "shortcuts": [
+  {
+   "name": "โน้ต",
+   "short_name": "โน้ต",
+   "url": "./#nt",
+   "icons": [
+    {
+     "src": "icons/icon-192.png",
+     "sizes": "192x192"
+    }
+   ]
+  },
+  {
+   "name": "Habit",
+   "short_name": "Habit",
+   "url": "./#hab",
+   "icons": [
+    {
+     "src": "icons/icon-192.png",
+     "sizes": "192x192"
+    }
+   ]
+  },
+  {
+   "name": "ปฏิทิน",
+   "short_name": "ปฏิทิน",
+   "url": "./#cal",
+   "icons": [
+    {
+     "src": "icons/icon-192.png",
+     "sizes": "192x192"
+    }
+   ]
+  }
+ ]
+}
